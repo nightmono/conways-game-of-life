@@ -9,7 +9,7 @@ directions = [
 def print_grid(grid):
     for line in grid:
         line = map(str, line)
-        print("".join(line).replace("0", ".").replace("1", "#"))
+        print(" ".join(line).replace("0", ".").replace("1", "#"))
 
 def in_bounds(grid, x, y) -> bool:
     return x >= 0 and x < len(grid[0]) and y >= 0 and y < len(grid)
