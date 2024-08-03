@@ -14,6 +14,18 @@ def print_grid(grid):
 def in_bounds(grid, x, y) -> bool:
     return x >= 0 and x < len(grid[0]) and y >= 0 and y < len(grid)
 
+
+# TODO: better func name
+def rebound(grid, x, y):
+    # This is an alternative way to handle out of bounds by having the out of 
+    # bounds by looping the value back to the beginning to prevent the error
+    # This would allow automata to cycle forever rather than stopping at the
+    # map edges
+    
+    # w = 5
+    # x = 7 -> x = 3
+    raise NotImplementedError("See function source code")
+
 def check_tile(grid, new, x, y):
     neighbours = 0
 
