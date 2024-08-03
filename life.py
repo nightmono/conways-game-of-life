@@ -1,0 +1,74 @@
+#!/usr/bin/python3
+
+directions = [
+    [-1, -1], [0, -1], [1, -1],
+    [-1, 0], [1, 0],
+    [-1, 1], [0, 1], [1, 1]
+]
+
+def print_grid(grid):
+    for line in grid:
+        line = map(str, line)
+        print("".join(line).replace("0", ".").replace("1", "#"))
+
+def in_bounds(grid, x, y) -> bool:
+    return x >= 0 and x < len(grid[0]) and y >= 0 and y < len(grid)
+
+def check_tile(grid, new, x, y):
+    neighbours = 0
+
+    for d in directions:
+        dx = x + d[0]
+        dy = y + d[1]
+        if in_bounds(grid, dx, dy):
+            neighbours += grid[dy][dx]
+
+    if neighbours < 2 or neighbours > 3:
+        new[y][x] = 0
+    if not grid[y][x] and neighbours == 3:
+        new[y][x] = 1
+
+def check_grid(grid):
+    w = len(grid[0])
+    h = len(grid)
+
+    new = [[c for c in line] for line in grid]
+
+    for y in range(h):
+        for x in range(w):
+            check_tile(grid, new, x, y)
+
+    return [[c for c in line] for line in new]
+
+def make_grid(text):
+    lines = text.strip().split("\n")
+    grid = [list(map(int, line)) for line in lines]
+    return grid
+
+def main():
+    import time
+
+    text = """
+01000000000000000000000000000000000000
+00100000000000000000000000000000000000
+11100000000000000000000000000000000000
+00000000000000000000000000000000000000
+00000000000000000000000000000000000000
+00000000000000000000000000000000000000
+00000000000000000000000000000000000000
+00000000000000000000000000000000000000
+00000000000000000000000000000000000000
+00000000000000000000000000000000000000
+00000000000000000000000000000000000000
+00000000000000000000000000000000000000
+"""
+    grid = make_grid(text)
+
+    while 1:
+        print_grid(grid)
+        grid = check_grid(grid)
+        time.sleep(0.2)
+        print(f"\033[{len(grid)}A", end="")
+
+if __name__ == "__main__":
+    main()
