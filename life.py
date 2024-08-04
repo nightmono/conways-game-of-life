@@ -10,7 +10,7 @@ def in_bounds(grid, x, y) -> bool:
     return x >= 0 and x < len(grid[0]) and y >= 0 and y < len(grid)
 
 
-# TODO: better func name
+# TODO: better func name, such as wrap around
 def rebound(grid, x, y):
     # This is an alternative way to handle out of bounds by having the out of 
     # bounds by looping the value back to the beginning to prevent the error
