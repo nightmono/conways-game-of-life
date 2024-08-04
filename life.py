@@ -35,7 +35,7 @@ def check_tile(grid, new, x, y):
     if not grid[y][x] and neighbours == 3:
         new[y][x] = 1
 
-def check_grid(grid):
+def tick(grid):
     w = len(grid[0])
     h = len(grid)
 
@@ -78,7 +78,7 @@ def main():
 
     while 1:
         print_grid(grid)
-        grid = check_grid(grid)
+        grid = tick(grid)
         time.sleep(0.5)
         print(f"\033[{len(grid)}A", end="")
 
