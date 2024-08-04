@@ -6,11 +6,6 @@ directions = [
     [-1, 1], [0, 1], [1, 1]
 ]
 
-def print_grid(grid):
-    for line in grid:
-        line = map(str, line)
-        print(" ".join(line).replace("0", ".").replace("1", "#"))
-
 def in_bounds(grid, x, y) -> bool:
     return x >= 0 and x < len(grid[0]) and y >= 0 and y < len(grid)
 
@@ -51,6 +46,11 @@ def check_grid(grid):
             check_tile(grid, new, x, y)
 
     return [[c for c in line] for line in new]
+
+def print_grid(grid):
+    for line in grid:
+        line = map(str, line)
+        print(" ".join(line).replace("0", ".").replace("1", "#"))
 
 def make_grid(text):
     lines = text.strip().split("\n")
