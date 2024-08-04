@@ -21,7 +21,7 @@ def rebound(grid, x, y):
     # x = 7 -> x = 3
     raise NotImplementedError("See function source code")
 
-def check_tile(grid, new, x, y):
+def update_tile(grid, new, x, y):
     neighbours = 0
 
     for d in directions:
@@ -43,7 +43,7 @@ def tick(grid):
 
     for y in range(h):
         for x in range(w):
-            check_tile(grid, new, x, y)
+            update_tile(grid, new, x, y)
 
     return [[c for c in line] for line in new]
 
