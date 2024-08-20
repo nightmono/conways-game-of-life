@@ -39,13 +39,13 @@ def tick(grid):
     w = len(grid[0])
     h = len(grid)
 
-    new = [[c for c in line] for line in grid]
+    new = [list(line) for line in grid]
 
     for y in range(h):
         for x in range(w):
             update_tile(grid, new, x, y)
 
-    return [[c for c in line] for line in new]
+    return [list(line) for line in new]
 
 def print_grid(grid):
     for line in grid:
