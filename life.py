@@ -12,13 +12,15 @@ def in_bounds(grid, x, y) -> bool:
 
 # TODO: better func name, such as wrap around
 def rebound(grid, x, y):
-    # This is an alternative way to handle out of bounds by having the out of 
-    # bounds by looping the value back to the beginning to prevent the error
-    # This would allow automata to cycle forever rather than stopping at the
-    # map edges
-    
-    # w = 5
-    # x = 7 -> x = 3
+    # Alternative to in_bounds function where neighbours just loop back to
+    # other edge (end of right edge -> start of left edge)
+    # Would allow automata to cycle forever rather than hitting a map edge
+
+    # if y >= len(grid):
+    #     return 0
+    # else:
+    #     return y
+
     raise NotImplementedError("See function source code")
 
 def update_tile(grid, new, x, y):
